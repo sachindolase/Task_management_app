@@ -1,20 +1,73 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, FlatList, Text } from "react-native";
 
-export default function App() {
+const ListDemo = () => {
+  const names = [
+    {
+      index: "1",
+      name: "vinod",
+      
+    },
+    {
+      index: "2",
+      name: "sachin",
+    },
+    {
+      index: "3",
+      name: "rakesh",
+    },
+    {
+      index: "4",
+      name: "rohan",
+    },
+    {
+      index: "5",
+      name: "roshan",
+    },
+    {
+      index: "6",
+      name: "saurabh",
+    },
+    {
+      index: "7",
+      name: "Manish",
+    },
+  ];
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <FlatList
+      style={styles.listStyle}
+      keyExtractor={(key) => {
+        return key.index;
+      }}
+      horizontal
+      inverted
+      //   numColumns={2}
+      showsHorizontalScrollIndicator={false}
+      data={names}
+      renderItem={({ item }) => {
+        console.log(item.name);
+        return <Text style={styles.textStyle}> {item.name} </Text>;
+      }}
+    />
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  textStyle: {
+    fontSize: 30,
+    padding: 30,
+    backgroundColor: "red",
+    margin: 15,
+    color: "white",
   },
+  listStyle: {
+    textAlign: "center",
+    margin: 20,
+    padding: 10,
+  },
+  
+    
+  
 });
+
+export default ListDemo;
